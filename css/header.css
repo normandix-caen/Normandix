@@ -1,0 +1,165 @@
+.header {
+    height: 450px;
+    width: 100%;
+    background: orange;
+    position: relative;
+}
+
+.header__texture {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0; 
+    background: orange;
+    background-size: cover;
+    z-index: 1;
+    opacity: 0,5;  
+}
+
+.header__mask {
+    position: absolute;
+    bottom: 0;
+    background: 0 0;
+    height: 42px;
+    width: 100%;
+    z-index: 10;
+}
+
+.header__navbar {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__navbar--logo-title {
+    color: black;
+    font-size: 28px;
+    position: relative;
+    z-index: 10;
+}
+
+.header__navbar--logo-img {
+    padding-top: 100px;
+    position: relative;
+    z-index: 5;
+    border-radius: 7px;
+}
+
+.header__navbar--menu-link {
+    margin-left: 40px;
+    color: white;
+    text-decoration: none;
+
+}
+
+.header__slogan {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.h__slogan--title {
+    color: white;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-family: 'Anton';
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+.h_slogan--undertitle {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: 'Anton';
+    font-style: italic;
+    letter-spacing: 2px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+
+.h__slogan--btn {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    background-color: #f39c12;
+    border-radius: 7px;
+    font-family: 'Anton';
+    letter-spacing: 2px;
+    font-style: initial;
+}
+
+.header__navbar-toggle {
+    width: 40px;
+    height: 60px;
+    align-items: center;
+    display: none;
+    cursor: pointer;
+
+}
+.header__navbar-toggle-icons, .header__navbar-toggle-icons:before, .header__navbar-toggle-icons:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 5px;
+    background: white;
+    position: relative;
+}
+.header__navbar-toggle-icons:before {top: 10px;}
+.header__navbar-toggle-icons:after {top: -14px;}
+
+.is-open .header__navbar--menu {
+    transform: translateY(0);
+}
+
+@media only screen and (max-width: 1200px) {
+    .container {
+        width: 100%;
+        padding: 0 20px;
+    }
+    .header__navbar-toggle{
+        display: flex;
+        z-index: 1000;
+    }
+    .header__navbar--menu {
+        transition: all 0.3s ease-in-out;
+        transform: translateY(-100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background: orange;
+        top: 0;left: 0;
+        z-index: 150;
+    }
+    .header__navbar--menu-link {
+        margin: 20px 0;
+        font-size: 20px;
+    }
+
+    .h_slogan--undertitle {
+        font-size: 15px;
+        padding-top: 7px;
+        padding-bottom: 20px;
+        
+    }
+
+    .h_slogan--title {
+        font-size: 30;
+        padding-top: 30px;
+    }
+    
+    .h__slogan--btn {
+        padding: 10px 20px;
+        border-radius: 7px;
+        letter-spacing: 1px;
+    }
+}
+

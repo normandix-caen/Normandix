@@ -1,0 +1,96 @@
+.footer {
+    background: orange;
+    color: white;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.contenu-footer {
+    width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 15px;
+    padding: 30px 20px 50px;
+}
+.bloc {
+    margin: 10px 70px;
+}
+
+.footer__contact h3,
+.footer__service h3,
+.footer__resaux-sociaux h3,
+.footer__mention--legal h3 {
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+/*TITRE*/
+
+.contenu-footer h3 {
+    color: black;
+}
+
+
+/*CONTACT*/
+.footer__liste--contact li {
+    padding: 2px 0;
+}
+
+.footer__liste--contact a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer__liste--contact a:hover {
+    color: rgb(3,3,3);
+}
+
+/*SERVICE*/
+
+.footer__liste--service li {
+    padding: 2px 0;
+}
+.footer__liste--service a {
+    text-decoration: none;
+    color: white;
+}
+.footer__liste--service a:hover {
+    color: rgb(3,3,3);
+}
+
+/*RESAUX-SOCIAUX*/
+
+.footer__liste--media li {
+    padding: 2px 0;
+}
+
+.footer__liste--media a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer__liste--media a:hover {
+    color: rgb(3,3,3);
+}
+
+/*MentionLegal*/
+
+.footer__mention--legal-liste a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer__mention--legal-liste a:hover {
+    color: rgb(3,3,3);
+}
+
+/*responsive*/
+
+@media only screen and (max-width: 1200px){
+    .contenu-footer {
+        display: flex;
+        flex-direction: column;
+    }
+}
