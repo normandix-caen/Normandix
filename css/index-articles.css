@@ -114,5 +114,13 @@
         margin-left: 20px;
         margin-right: 20px;
     }
+    
+    .article:hover .article__icon {
+    transform: translateY(100%);
+}
+
+.article4:hover .article__icon {
+    transform: translateY(100%);
+}
      
 }
