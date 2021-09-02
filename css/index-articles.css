@@ -114,6 +114,30 @@
         margin-left: 20px;
         margin-right: 20px;
     }
-   
+
+    .article:hover .article__icon {
+        transform: translateY(0);
+    }
+    
+    .article4:hover .article__icon {
+        transform: translateY(0);
+    }
+    
+    .article__icon {
+        z-index: 15;
+        position: absolute;
+        top: 0;left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        color: #f39c12;
+        height: 100%;
+        width: 100%;
+        transition: all 0.3s;
+        transform: translateY(0);
+        cursor: pointer;
+    
+    }
      
 }
