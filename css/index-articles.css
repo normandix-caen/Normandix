@@ -1,0 +1,145 @@
+.articles {
+    text-align: center;
+    padding-top: 40px;
+    position: relative;
+    z-index: 10;
+    padding-bottom: 250px;
+}
+
+
+.articles__title {
+    font-size: 28px;
+    text-align: center;
+    color: black;
+    border-bottom: 3px solid #f39c12;
+    display: inline;
+}
+
+.articles__items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 50px;
+    flex-wrap: wrap;
+}
+
+.articles__items2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 50px;
+    flex-wrap: wrap;
+}
+
+.article {
+    width: 25%;
+    height: 300px;
+    border-radius: 7px;
+    position: relative;
+    overflow: hidden;
+}
+.article__filtre {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;left: 0;
+    background: linear-gradient( rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+}
+
+.article__name {
+    color: white;
+    z-index: 999;
+    position: relative;
+    text-align: center;
+    font-family: 'Nanito';
+    font-size: 20px;
+    border-bottom: 2px solid #f39c12;
+    display: inline;
+}
+
+.article:hover .article__icon {
+    transform: translateY(0);
+}
+
+.article4:hover .article__icon {
+    transform: translateY(0);
+}
+
+.article__icon {
+    z-index: 15;
+    position: absolute;
+    top: 0;left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #f39c12;
+    height: 100%;
+    width: 100%;
+    transition: all 0.3s;
+    transform: translateY(100%);
+    cursor: pointer;
+
+}
+
+.article4 {
+    width: 25%;
+    height: 300px;
+    border-radius: 7px;
+    position: relative;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 1350px) {
+
+    .articles__items {
+        justify-content: center;
+    }
+
+    .articles__items2 {
+        justify-content: center;
+        padding-top: 1px;
+    }
+
+    .article {
+        width: 300px; 
+        margin-bottom: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .article4 {
+        width: 300px; 
+        margin-bottom: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .article:hover .article__icon {
+        transform: translateY(0);
+    }
+    
+    .article4:hover .article__icon {
+        transform: translateY(0);
+    }
+    
+    .article__icon {
+        z-index: 15;
+        position: absolute;
+        top: 0;left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        color: #f39c12;
+        height: 100%;
+        width: 100%;
+        transition: all 0.3s;
+        transform: translateY(0);
+        cursor: pointer;
+    
+    }
+     
+}
+
+/*dcsdfsdfsdf*/

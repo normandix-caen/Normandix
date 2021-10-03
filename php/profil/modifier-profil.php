@@ -1,0 +1,166 @@
+<?php
+    session_start();
+    include('../../database/connexionDB.php');
+ 
+    if (!isset($_SESSION['id'])){
+        header('Location: ../../index.php');
+        exit;
+    }
+ 
+    // On récupère les informations de l'utilisateur connecté
+    $afficher_profil = $DB->query("SELECT * 
+        FROM users 
+        WHERE id = ?",
+        array($_SESSION['id']));
+    $afficher_profil = $afficher_profil->fetch();
+ 
+    if(!empty($_POST)){
+        extract($_POST);
+        $valid = true;
+ 
+        if (isset($_POST['modification'])){
+            $nom = htmlentities(trim($nom));
+            $prenom = htmlentities(trim($prenom));
+            $mail = htmlentities(strtolower(trim($mail)));
+ 
+            if(empty($nom)){
+                $valid = false;
+                $er_nom = "Il faut mettre un nom";
+            }
+ 
+            if(empty($prenom)){
+                $valid = false;
+                $er_prenom = "Il faut mettre un prénom";
+            }
+ 
+            if(empty($mail)){
+                $valid = false;
+                $er_mail = "Il faut mettre un mail";
+ 
+            }elseif(!preg_match("/^[a-z0-9\-_.]+@[a-z]+\.[a-z]{2,3}$/i", $mail)){
+                $valid = false;
+                $er_mail = "Le mail n'est pas valide";
+ 
+            }else{
+                $req_mail = $DB->query("SELECT mail 
+                    FROM users
+                    WHERE mail = ?",
+                    array($mail));
+                $req_mail = $req_mail->fetch();
+ 
+                if ($req_mail['mail'] <> "" && $_SESSION['mail'] != $req_mail['mail']){
+                    $valid = false;
+                    $er_mail = "Ce mail existe déjà";
+                }
+            }
+ 
+            if ($valid){
+ 
+                $DB->insert("UPDATE users SET prénom = ?, nom = ?, mail = ? 
+                    WHERE id = ?", 
+                    array($prenom, $nom,$mail, $_SESSION['id']));
+ 
+                $_SESSION['nom'] = $nom;
+                $_SESSION['prénom'] = $prenom;
+                $_SESSION['mail'] = $mail;
+ 
+                header('Location:  profil');
+                exit;
+            }   
+        }
+    }
+?>
+
+<!DOCTYPE html>
+
+<html lang="fr">
+
+    <head>
+
+        <meta charset="utf-8">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://kit.fontawesome.com/2ee5578a0d.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Roboto&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="../../css/base.css">
+        <link rel="stylesheet" href="../../css/header.css">
+        <link rel="stylesheet" href="../../css/footer.css">
+        <link rel="stylesheet" href="../../css/modifier-profil.css">
+
+        <title>Modifier votre profil | Normandix</title>
+
+    </head>
+
+    <body>      
+
+    <?php include('../../extensions/header.php') ?>
+
+        <div class="corps">
+            <div class="modifier">
+            <h1>Modification</h1>
+
+<form method="post">
+
+    <?php
+
+        if (isset($er_nom)){
+
+        ?>
+
+            <div><?= $er_nom ?></div>
+
+        <?php   
+
+        }
+
+    ?>
+
+    <input type="text" placeholder="Votre nom" name="nom" value="<?php if(isset($nom)){ echo $nom; }else{ echo $afficher_profil['nom'];}?>" required>   
+
+    <?php
+
+        if (isset($er_prenom)){
+
+        ?>
+
+            <div><?= $er_prenom ?></div>
+
+        <?php   
+
+        }
+
+    ?>
+
+    <input type="text" placeholder="Votre prénom" name="prenom" value="<?php if(isset($prenom)){ echo $prenom; }else{ echo $afficher_profil['prénom'];}?>" required>   
+
+    <?php
+
+        if (isset($er_mail)){
+
+        ?>
+
+            <div><?= $er_mail ?></div>
+
+        <?php   
+
+        }
+
+    ?>
+
+    <input type="email" placeholder="Adresse mail" name="mail" value="<?php if(isset($mail)){ echo $mail; }else{ echo $afficher_profil['mail'];}?>" required>
+
+    <button type="submit" name="modification">Modifier</button>
+
+</form>
+
+            </div>
+        </div>
+
+        <?php include('../../extensions/footer.php') ?>
+
+    </body>
+
+</html>
