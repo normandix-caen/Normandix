@@ -1,7 +1,7 @@
 <?php
     
     session_start();
-    include('../../database/connexionDB.php');
+    include('database/connexionDB.php');
 
 ?>
 
